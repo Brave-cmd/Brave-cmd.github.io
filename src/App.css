@@ -1,0 +1,74 @@
+/* 头部容器：语义化命名，明确作用 */
+.site-header {
+  padding: clamp(16px, 3vw, 20px) 0; /* 响应式内边距，随屏幕尺寸动态调整 */
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 51, 102, 0.08);
+  border-bottom: 1px solid #E1E5E8;
+  transition: all 0.3s ease;
+}
+
+/* 深色模式全局样式：统一管理主题色 */
+.dark {
+  --header-bg: #1A202C;
+  --header-border: #4A5568;
+  --header-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --title-color: #E2E8F0;
+  --logo-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+/* 浅色模式全局样式：与深色模式变量对应 */
+:root:not(.dark) {
+  --header-bg: #FFFFFF;
+  --header-border: #E1E5E8;
+  --header-shadow: 0 2px 8px rgba(0, 51, 102, 0.08);
+  --title-color: #003366;
+  --logo-shadow: 0 1px 2px rgba(0, 51, 102, 0.15);
+}
+
+/* 应用主题变量：减少重复代码 */
+.site-header {
+  background-color: var(--header-bg);
+  box-shadow: var(--header-shadow);
+  border-bottom-color: var(--header-border);
+}
+
+/* 头部内容容器 */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 16px); /* 响应式间距 */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 标题样式 */
+.site-title {
+  margin: 0;
+  color: var(--title-color);
+  font-size: clamp(1.4rem, 3vw, 1.8rem); /* 响应式字体大小 */
+  font-weight: 700;
+  font-family: "Microsoft YaHei", "Source Han Sans CN", sans-serif;
+  transition: color 0.3s ease;
+}
+
+/* 校徽样式 */
+.school-logo {
+  filter: drop-shadow(var(--logo-shadow));
+  transition: filter 0.3s ease;
+  /* 确保校徽在不同尺寸下保持比例 */
+  max-height: 48px;
+  object-fit: contain;
+}
+
+/* 移动端补充优化（768px以下） */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 16px; /* 进一步缩小移动端内边距 */
+  }
+
+  .school-logo {
+    max-height: 36px; /* 移动端校徽等比例缩小 */
+  }
+}
