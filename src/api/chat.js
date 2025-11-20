@@ -1,3 +1,4 @@
+// 2025-11-20 强制更新接口地址
 // 讯飞大模型接口请求函数（已替换为最新 Vercel 后端地址）
 export const requestXunfeiChat = async (messages, options = {}) => {
   // 新接口地址（固定替换为你的最新 Vercel 后端地址）
